@@ -2,7 +2,7 @@
 
 ## Functions that may come handy in some solutions
 
-from gmpy import fac, is_prime, is_square, next_prime
+from gmpy import bincoef, fac, is_prime, is_square, next_prime
 from operator import mul
 from subprocess import check_output
 
