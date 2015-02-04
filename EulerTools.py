@@ -41,8 +41,7 @@ def is_triangle(t):
 	return triangle(n) == t
 
 def number_of_divisors(n):
-	exps = prime_factors_compact(n).values()
-	return reduce( mul, [e+1 for e in exps], 1 )
+	return sigma(0,n)
 
 def octagonal(n):
 	return n*(3*n-2)
@@ -60,7 +59,7 @@ def polygonal(i,n):
 	return -1
 
 def prime_factors(n):
-	output = execute_command("factor", str(n))[:-1]
+	output = execute_command("factor", str(n))
 	factors = output.split(" ")[1:]
 	return map( int, factors )
 
@@ -68,14 +67,15 @@ def prime_factors_compact(n):
 	factors = prime_factors(n)
 	return dict( (p,factors.count(p)) for p in factors )
 
+def sigma(x,n):
+	factors = prime_factors_compact(n)
+	sigmaValue = 1
+	for p, e in factors.items():
+		sigmaValue *= sum( [ p**(x*t) for t in xrange(0,e+1) ] )
+	return sigmaValue
+
 def sum_of_divisors(n):
-	divisors = set([1,n])
-	root = int(n**0.5)
-	for d in xrange(2,root+1):
-		if n%d == 0:
-			divisors.add(d)
-			divisors.add(n//d)
-	return sum(divisors)
+	return sigma(1,n)
 
 def square(n):
 	return n**2
