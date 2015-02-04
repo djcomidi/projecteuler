@@ -2,12 +2,15 @@
 
 ## Functions that may come handy in some solutions
 
-from gmpy import bincoef, fac, is_prime, is_square, next_prime
+from gmpy import bincoef, fac, gcd, is_prime, is_square, next_prime
 from operator import mul
 from subprocess import check_output
 
 def aliquot_sum(n):
 	return sum_of_divisors(n) - n
+
+def heptagonal(n):
+	return (n*(5*n-3))//2
 
 def hexagonal(n):
 	return n*(2*n-1)
@@ -19,6 +22,9 @@ def is_palindrome(x):
 def is_pandigital(s,lowest=1,highest=9):
 	return sorted(s) == map( str, range(lowest,highest+1) )
 
+def is_power(n,e):
+	return int(round(n**(1.0/e)))**e == n
+
 def is_triangle(t):
 	n = int((2*t)**0.5)
 	return triangle(n) == t
@@ -27,8 +33,20 @@ def number_of_divisors(n):
 	exps = prime_factors_compact(n).values()
 	return reduce( mul, [e+1 for e in exps], 1 )
 
+def octagonal(n):
+	return n*(3*n-2)
+
 def pentagonal(n):
 	return (n*(3*n-1))//2
+
+def polygonal(i,n):
+	if i == 3: return triangle(n)
+	if i == 4: return square(n)
+	if i == 5: return pentagonal(n)
+	if i == 6: return hexagonal(n)
+	if i == 7: return heptagonal(n)
+	if i == 8: return octagonal(n)
+	return -1
 
 def prime_factors(n):
 	output = check_output(["factor",str(n)])[:-1]
@@ -47,6 +65,17 @@ def sum_of_divisors(n):
 			divisors.add(d)
 			divisors.add(n//d)
 	return sum(divisors)
+
+def square(n):
+	return n**2
+
+def totient(n):
+	if is_prime(n): return n-1
+	factors = prime_factors(n)
+	phi = n
+	for factor in set(factors):
+		phi = ( phi * (factor-1) ) // factor
+	return phi
 
 def triangle(n):
 	return ( n * (n+1) ) // 2
