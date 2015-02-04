@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 triangle = []
-with open('Problem018.data','r') as in_file:
+with open('Problem018.data') as in_file:
 	for line in in_file.readlines():
 		triangle.append( map( int, line[:-1].split(' ') ) )
 

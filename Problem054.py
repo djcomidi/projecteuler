@@ -34,7 +34,7 @@ def value_of_hand(hand):
 	return 1, max(ranks) # Highest card
 
 winsPlayerA = 0
-with open('Problem054_poker.txt','r') as in_file:
+with open('Problem054_poker.txt') as in_file:
 	for line in in_file.readlines():
 		handsAB = line[:-2].split(' ')
 		typeA, highA = value_of_hand(handsAB[:5])

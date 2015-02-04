@@ -6,7 +6,7 @@ def get_namescore(s):
 	return sum( ascii_uppercase.index(c)+1 for c in s )
 
 names = []
-with open('Problem022_names.txt','r') as in_file:
+with open('Problem022_names.txt') as in_file:
 	names = in_file.readline()[1:-1].split('","')
 names.sort()
 totalnamescore = 0

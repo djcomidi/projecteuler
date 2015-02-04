@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 DATA = []
-with open('Problem011.data','r') as in_file:
+with open('Problem011.data') as in_file:
 	for line in in_file.readlines():
 		DATA.append( map( int, line[:-1].split(' ') ) )
 H, W = len(DATA), len(DATA[0])
