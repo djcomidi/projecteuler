@@ -1,17 +1,20 @@
 #!/usr/bin/env python
 
+from EulerTools import Memoize
+
+# default recursionlimit (=10**3) gives a
+# RuntimeError: maximum recursion depth exceeded
+import sys
+sys.setrecursionlimit(10**4)
+
 COINS = [ 1, 2, 5, 10, 20, 50, 100, 200 ]
-ways = 0
 
-def consume(used):
-	s = sum(used)
-	if s == 200:
-		global ways
-		ways += 1
-	else:
-		for c in filter(lambda x: max(used) <= x <= 200-s, COINS):
-			consume(used+[c])
+@Memoize
+def pay(rest,mincoin=1):
+	if rest == 0: return 1
+	ways = 0
+	for coin in filter( lambda c: mincoin <= c <= rest, COINS ):
+		ways += pay( rest-coin, max(mincoin,coin) )
+	return ways
 
-consume([0])
-print ways
-# ~1m40s
+print pay(200)
