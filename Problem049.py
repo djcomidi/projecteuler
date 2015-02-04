@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-from EulerTools import is_prime, next_prime
+from EulerTools import is_prime
+from EulerTools import next_prime
 
 sequences = {}
 p = next_prime(10**3)

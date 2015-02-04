@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-from EulerTools import next_prime, is_prime
+from EulerTools import is_prime
+from EulerTools import next_prime
 
 def valid_prime(p):
 	s = str(p)

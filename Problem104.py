@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-from EulerTools import fib, is_pandigital
+from EulerTools import fib
+from EulerTools import is_pandigital
 
 fibA, fibB = 1, 1
 fibN = 2

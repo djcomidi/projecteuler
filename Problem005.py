@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-from EulerTools import mul, prime_factors_dict
+from EulerTools import mul
+from EulerTools import prime_factors_dict
 
 result = {}
 for n in xrange(2,21):

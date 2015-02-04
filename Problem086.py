@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-from EulerTools import is_prime, is_square
+from EulerTools import is_prime
+from EulerTools import is_square
 
 count = 0
 M = 0

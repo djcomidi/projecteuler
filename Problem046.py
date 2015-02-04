@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
-from EulerTools import is_prime, is_square, next_prime
+from EulerTools import is_prime
+from EulerTools import is_square
+from EulerTools import next_prime
 
 def matches_criteria(n):
 	if is_prime(n): return True
