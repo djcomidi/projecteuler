@@ -1,15 +1,27 @@
 #!/usr/bin/env python
 
-## Functions that may come handy in some solutions
+########################################################################
+## Imports
+########################################################################
 
 from sys import hexversion
 
-from gmpy import bincoef, fac, fib, gcd, is_prime, is_square, next_prime
-from operator import mul
+from gmpy import bincoef
+from gmpy import fac
+from gmpy import fib
+from gmpy import gcd
+from gmpy import is_prime
+from gmpy import is_square
+from gmpy import next_prime
 if hexversion >= 0x03000000:
 	from subprocess import check_output
 else:
 	from commands import getoutput
+from operator import mul
+
+########################################################################
+## Functions
+########################################################################
 
 def aliquot_sum(n):
 	return sum_of_divisors(n) - n
@@ -77,3 +89,34 @@ def totient(n):
 	for factor in prime_factors_dict(n).keys():
 		phi = ( phi * (factor-1) ) // factor
 	return phi
+
+########################################################################
+## Decorators
+########################################################################
+
+# http://wiki.python.org/moin/PythonDecoratorLibrary#Memoize
+class Memoize(object):
+	"""Decorator that caches a function's return value each time it is called.
+	If called later with the same arguments, the cached value is returned, and
+	not re-evaluated.
+	"""
+	def __init__(self, func):
+		self.func = func
+		self.cache = {}
+	def __call__(self, *args):
+		try:
+			return self.cache[args]
+		except KeyError:
+			value = self.func(*args)
+			self.cache[args] = value
+			return value
+		except TypeError:
+			# uncachable -- for instance, passing a list as an argument.
+			# Better to not cache than to blow up entirely.
+			return self.func(*args)
+	def __repr__(self):
+		"""Return the function's docstring."""
+		return self.func.__doc__
+	def __get__(self, obj, objtype):
+		"""Support instance methods."""
+		return functools.partial(self.__call__, obj)
