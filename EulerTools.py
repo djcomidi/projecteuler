@@ -4,7 +4,7 @@
 
 from sys import hexversion
 
-from gmpy import bincoef, fac, gcd, is_prime, is_square, next_prime
+from gmpy import bincoef, fac, fib, gcd, is_prime, is_square, next_prime
 from operator import mul
 if hexversion >= 0x03000000:
 	from subprocess import check_output
@@ -30,8 +30,8 @@ def is_palindrome(x):
 	s = str(x)
 	return s == s[::-1]
 
-def is_pandigital(s,lowest=1,highest=9):
-	return sorted(s) == map( str, range(lowest,highest+1) )
+def is_pandigital(x,lowest=1,highest=9):
+	return sorted(str(x)) == map( str, range(lowest,highest+1) )
 
 def is_power(n,e):
 	return int(round(n**(1.0/e)))**e == n
