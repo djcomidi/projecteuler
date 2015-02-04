@@ -20,12 +20,6 @@ def execute_command(cmd,args=""):
 	else:
 		return getoutput("%s %s"%(cmd,str(args)))
 	
-def heptagonal(n):
-	return (n*(5*n-3))//2
-
-def hexagonal(n):
-	return n*(2*n-1)
-
 def is_palindrome(x):
 	s = str(x)
 	return s == s[::-1]
@@ -33,42 +27,42 @@ def is_palindrome(x):
 def is_pandigital(x,lowest=1,highest=9):
 	return sorted(str(x)) == map( str, range(lowest,highest+1) )
 
-def is_power(n,e):
-	return int(round(n**(1.0/e)))**e == n
-
 def is_triangle(t):
 	n = int((2*t)**0.5)
-	return triangle(n) == t
+	return polygonal(3,n) == t
 
 def number_of_divisors(n):
 	return sigma(0,n)
 
-def octagonal(n):
-	return n*(3*n-2)
-
-def pentagonal(n):
-	return (n*(3*n-1))//2
-
 def polygonal(i,n):
-	if i == 3: return triangle(n)
-	if i == 4: return square(n)
-	if i == 5: return pentagonal(n)
-	if i == 6: return hexagonal(n)
-	if i == 7: return heptagonal(n)
-	if i == 8: return octagonal(n)
+	if i == 3: # triangle
+		return ( n * (n+1) ) // 2
+	if i == 4: # square
+		return n**2
+	if i == 5: # pentagonal
+		return (n*(3*n-1))//2
+	if i == 6: # hexagonal
+		return n*(2*n-1)
+	if i == 7: # heptagonal
+		return (n*(5*n-3))//2
+	if i == 8: # octagonal
+		return n*(3*n-2)
 	return -1
 
 def prime_factors(n):
-	output = execute_command("factor", str(n))
-	factors = output.split(" ")[1:]
-	return map( int, factors )
+	p, primes = 1, []
+	while n > 1:
+		p = next_prime(p)
+		while n % p == 0:
+			primes, n = primes+[int(p)], n//p
+	return primes
 
-def prime_factors_compact(n):
+def prime_factors_dict(n):
 	factors = prime_factors(n)
 	return dict( (p,factors.count(p)) for p in factors )
 
 def sigma(x,n):
-	factors = prime_factors_compact(n)
+	factors = prime_factors_dict(n)
 	sigmaValue = 1
 	for p, e in factors.items():
 		sigmaValue *= sum( [ p**(x*t) for t in xrange(0,e+1) ] )
@@ -77,16 +71,9 @@ def sigma(x,n):
 def sum_of_divisors(n):
 	return sigma(1,n)
 
-def square(n):
-	return n**2
-
 def totient(n):
 	if is_prime(n): return n-1
-	factors = prime_factors(n)
 	phi = n
-	for factor in set(factors):
+	for factor in prime_factors_dict(n).keys():
 		phi = ( phi * (factor-1) ) // factor
 	return phi
-
-def triangle(n):
-	return ( n * (n+1) ) // 2
