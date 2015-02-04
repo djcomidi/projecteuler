@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 
-from EulerTools import triangle, pentagonal, hexagonal
+from EulerTools import polygonal
 
 tN, pN, hN = 285, 165, 143
-t, p, h = triangle(tN), pentagonal(pN), hexagonal(hN)
+t, p, h = polygonal(3,tN), polygonal(5,pN), polygonal(6,hN)
 while True:
 	hN += 1
-	h = hexagonal(hN)
+	h = polygonal(6,hN)
 	while p < h:
 		pN += 1
-		p = pentagonal(pN)
+		p = polygonal(5,pN)
 	while t < p:
 		tN += 1
-		t = triangle(tN)
+		t = polygonal(3,tN)
 	if h == p == t:
 		break
 print t

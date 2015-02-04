@@ -14,4 +14,4 @@ def consume(used):
 
 consume([0])
 print ways
-# 3'10 ... takes a bit too long :s, but it does the job :)
+# ~1m40s
