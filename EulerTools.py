@@ -2,13 +2,24 @@
 
 ## Functions that may come handy in some solutions
 
+from sys import hexversion
+
 from gmpy import bincoef, fac, gcd, is_prime, is_square, next_prime
 from operator import mul
-from subprocess import check_output
+if hexversion >= 0x03000000:
+	from subprocess import check_output
+else:
+	from commands import getoutput
 
 def aliquot_sum(n):
 	return sum_of_divisors(n) - n
 
+def execute_command(cmd,args=""):
+	if hexversion >= 0x03000000:
+		return check_output([cmd,str(args)])
+	else:
+		return getoutput("%s %s"%(cmd,str(args)))
+	
 def heptagonal(n):
 	return (n*(5*n-3))//2
 
@@ -49,8 +60,8 @@ def polygonal(i,n):
 	return -1
 
 def prime_factors(n):
-	output = check_output(["factor",str(n)])[:-1]
-	factors = output.split(" ")[1:] 
+	output = execute_command("factor", str(n))[:-1]
+	factors = output.split(" ")[1:]
 	return map( int, factors )
 
 def prime_factors_compact(n):
