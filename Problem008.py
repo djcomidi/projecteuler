@@ -3,7 +3,7 @@
 from EulerTools import mul
 
 data = ""
-with open('Problem008.data') as in_file:
+with open('Problem008_data.txt') as in_file:
 	for line in in_file.readlines():
 		data += line[:-1]
 max_prod = 0
