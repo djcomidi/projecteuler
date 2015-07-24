@@ -1,17 +1,20 @@
-#!/usr/bin/env python
-
 def get_part(n):
-	if n == 1: return 2
-	if n%3 == 0: return 2*(n//3)
-	else: return 1
+    if n == 1:
+        return 2
+    if n % 3 == 0:
+        return 2 * (n // 3)
+    else:
+        return 1
 
-def get_term(n):
-	nom, denom = get_part(n), 1
-	while n > 1:
-		n -= 1
-		p = get_part(n)
-		nom, denom = p*nom+denom, nom
-	return nom, denom
 
-nom, denom = get_term(100)
-print sum( map( int, list(str(nom)) ) )
+def get_term(i):
+    nom, denom = get_part(i), 1
+    while i > 1:
+        i -= 1
+        p = get_part(i)
+        nom, denom = p * nom + denom, nom
+    return nom, denom
+
+
+n, d = get_term(100)
+print sum(map(int, list(str(n))))

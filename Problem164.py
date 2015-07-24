@@ -1,14 +1,16 @@
-#!/usr/bin/env python
-
 from EulerTools import Memoize
 
+
 @Memoize
-def find_number(digitsToDo,lastDigit=0,maxAllowed=10):
-	if digitsToDo == 0: return 1
-	if digitsToDo == 19 and lastDigit == 0: return 0
-	total = 0
-	for d in xrange(maxAllowed):
-		total += find_number(digitsToDo-1,d,10-lastDigit-d)
-	return total
+def find_number(digits_to_do, last_digit=0, max_allowed=10):
+    if digits_to_do == 0:
+        return 1
+    if digits_to_do == 19 and last_digit == 0:
+        return 0
+    total = 0
+    for d in xrange(max_allowed):
+        total += find_number(digits_to_do - 1, d, 10 - last_digit - d)
+    return total
+
 
 print find_number(20)

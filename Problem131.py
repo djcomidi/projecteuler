@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from EulerTools import is_prime
 
 # n^3 + p*n^2 = x^3
@@ -9,13 +7,14 @@ from EulerTools import is_prime
 # a^3-b^3 = (a-b)(a^2+a*b+b^2)
 # for p == a^3-b^3 => a-b = 1 => a=b+1
 
-LIMIT = 10**6
+LIMIT = 10 ** 6
 total = 0
 i = 0
 while True:
-	i += 1
-	p = 1+3*i+3*i**2
-	if p > LIMIT: break
-	if is_prime(p):
-		total += 1
+    i += 1
+    p = 1 + 3 * i + 3 * i ** 2
+    if p > LIMIT:
+        break
+    if is_prime(p):
+        total += 1
 print total

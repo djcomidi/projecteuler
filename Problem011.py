@@ -1,23 +1,26 @@
-#!/usr/bin/env python
-
 DATA = []
 with open('Problem011_data.txt') as in_file:
-	for line in in_file.readlines():
-		DATA.append( map( int, line[:-1].split(' ') ) )
+    for line in in_file.readlines():
+        DATA.append(map(int, line[:-1].split(' ')))
 H, W = len(DATA), len(DATA[0])
 
-def get_max_product(r,c):
-	prodE, prodSE, prodS, prodSW = 1, 1, 1, 1
-	for i in xrange(4):
-		if c <= W - 4:			prodE  *= DATA[r][c+i]
-		if c <= W - 4 and r <= H - 4:	prodSE *= DATA[r+i][c+i]
-		if r <= H - 4:			prodS  *= DATA[r+i][c]
-		if r <= H - 4 and c >= 4:	prodSW *= DATA[r+i][c-i]
-	return max( prodE, prodSE, prodS, prodSW )
+
+def get_max_product(row, column):
+    east, southeast, south, southwest = 1, 1, 1, 1
+    for i in xrange(4):
+        if column <= W - 4:
+            east *= DATA[row][column + i]
+        if column <= W - 4 and row <= H - 4:
+            southeast *= DATA[row + i][column + i]
+        if row <= H - 4:
+            south *= DATA[row + i][column]
+        if row <= H - 4 and column >= 4:
+            southwest *= DATA[row + i][column - i]
+    return max(east, southeast, south, southwest)
+
 
 max_product = 0
 for r in xrange(H):
-	for c in xrange(W):
-		max_product = max( max_product, get_max_product(r,c) )
+    for c in xrange(W):
+        max_product = max(max_product, get_max_product(r, c))
 print max_product
-

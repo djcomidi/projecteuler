@@ -1,14 +1,11 @@
-#!/usr/bin/env python
-
-from Dijkstra import dijkstra
+from Dijkstra import Dijkstra
 
 matrix = []
 with open('Problem081_matrix.txt') as in_file:
-	for line in in_file.readlines():
-		matrix.append( map( int, line[:-1].split(',') ) )
+    for line in in_file.readlines():
+        matrix.append(map(int, line[:-1].split(',')))
 ROWS, COLS = len(matrix), len(matrix[0])
 
-graph = dijkstra(matrix)
-graph.set_directions(goLeft=False,goUp=False)
+graph = Dijkstra(matrix)
+graph.set_directions(left=False, up=False)
 print graph.shortest_path()
-# ~25s

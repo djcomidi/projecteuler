@@ -1,12 +1,12 @@
-#!/usr/bin/env python
+import sys
 
 from EulerTools import polygonal
 
 SIZE = 2500
-pentas = [ polygonal(5,i) for i in xrange(1,SIZE+1) ]
+pentas = [polygonal(5, i) for i in xrange(1, SIZE + 1)]
 
 for a in xrange(len(pentas)):
-	for b in xrange(a+1,len(pentas)):
-		if pentas[b]+pentas[a] in pentas and pentas[b]-pentas[a] in pentas:
-			print pentas[b]-pentas[a]
-			exit(0)
+    for b in xrange(a + 1, len(pentas)):
+        if pentas[b] + pentas[a] in pentas and pentas[b] - pentas[a] in pentas:
+            print pentas[b] - pentas[a]
+            sys.exit(0)
