@@ -1,14 +1,15 @@
-from EulerTools import bincoef
-from EulerTools import next_prime
+from gmpy2 import bincoef
+from gmpy2 import next_prime
 
 numbers = set()
-for n in xrange(50):
-    for i in xrange(n + 1):
+for n in range(50):
+    for i in range(n + 1):
         numbers.add(bincoef(n, i))
 maxnum = max(numbers)
 
 p = 2
 while p * p < max(numbers):
-    numbers = filter(lambda x: x % (p * p) != 0, numbers)
+    numbers = [x for x in numbers if x % (p * p) != 0]
     p = next_prime(p)
-print sum(numbers)
+total = sum(numbers)
+print(total)

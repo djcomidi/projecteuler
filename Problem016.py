@@ -1,2 +1,3 @@
 n = 2 ** 1000
-print sum(map(int, list(str(n))))
+result = sum([int(t, 10) for t in str(n)])
+print(result)

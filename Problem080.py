@@ -1,4 +1,4 @@
-from EulerTools import is_square
+from gmpy2 import is_square
 
 
 def find_root_digits(num, t):
@@ -15,8 +15,8 @@ def find_root_digits(num, t):
 
 
 total = 0
-for n in xrange(1, 100):
+for n in range(1, 100):
     if is_square(n):
         continue
     total += sum(find_root_digits(n, 100))
-print total
+print(total)

@@ -1,5 +1,5 @@
-from EulerTools import is_prime
-from EulerTools import next_prime
+from gmpy2 import is_prime
+from gmpy2 import next_prime
 
 LIMIT = 10 ** 4
 
@@ -16,15 +16,16 @@ while p < LIMIT:
 
 
 def find_five(arr):
-    for i in xrange(len(arr) - 1):
+    for i in range(len(arr) - 1):
         if not make_prime(arr[-1], arr[i]):
             return
         if not make_prime(arr[i], arr[-1]):
             return
     if len(arr) == 5:
-        print map(int, arr), sum(arr)
+        message = "%s %d" % ([int(x) for x in arr], int(sum(arr)))
+        print(message)
     else:
-        for p in filter(lambda x: x > arr[-1], PRIMES):
+        for p in [x for x in PRIMES if x > arr[-1]]:
             find_five(arr + [p])
 
 

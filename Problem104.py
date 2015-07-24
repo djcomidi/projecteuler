@@ -1,4 +1,5 @@
-from EulerTools import fib
+from gmpy2 import fib
+
 from EulerTools import is_pandigital
 
 fibA, fibB = 1, 1
@@ -10,4 +11,4 @@ while not bFound:
         if is_pandigital(fibB):
             break
     bFound = is_pandigital(str(fib(fibN))[:9])
-print fibN
+print(fibN)

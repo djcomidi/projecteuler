@@ -1,6 +1,6 @@
-from EulerTools import is_prime
-from EulerTools import is_square
-from EulerTools import next_prime
+from gmpy2 import is_prime
+from gmpy2 import is_square
+from gmpy2 import next_prime
 
 
 def matches_criteria(num):
@@ -16,4 +16,4 @@ def matches_criteria(num):
 n = 35
 while matches_criteria(n):
     n += 2
-print n
+print(n)

@@ -1,14 +1,10 @@
 from EulerTools import is_pandigital
 
-
-def check_a_b_c(a, b, c):
-    return is_pandigital(str(a) + str(b) + str(c), 1, 9)
-
-
 pans = set([])
-for a in xrange(1, 50):
-    for b in xrange(a + 1, 2000):
+for a in range(1, 50):
+    for b in range(a + 1, 2000):
         c = a * b
-        if check_a_b_c(a, b, c):
+        if is_pandigital(str(a) + str(b) + str(c), 1, 9):
             pans.add(c)
-print sum(pans)
+result = sum(pans)
+print(result)

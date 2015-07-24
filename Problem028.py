@@ -5,6 +5,6 @@ def get_sum_corners(n):
 
 
 sum_diagonals = 1
-for n in xrange(3, 1002, 2):
+for n in range(3, 1002, 2):
     sum_diagonals += get_sum_corners(n)
-print sum_diagonals
+print(sum_diagonals)

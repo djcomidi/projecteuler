@@ -26,10 +26,10 @@ class Dijkstra:
         self.distance = {}
         self.previous = {}
         self.Q = []
-        for r in xrange(self.ROWS):
-            for c in xrange(self.COLS):
+        for r in range(self.ROWS):
+            for c in range(self.COLS):
                 self.Q.append((r, c))
-                self.distance[(r, c)] = sys.maxint
+                self.distance[(r, c)] = sys.maxsize
                 self.previous[(r, c)] = None
                 if (r, c) in startnodes:
                     self.distance[(r, c)] = self.data[r][c]
@@ -51,7 +51,7 @@ class Dijkstra:
         while len(self.Q) > 0:
             mindistance = min(self.distance[q] for q in self.Q)
             u = [q for q in self.Q if self.distance[q] == mindistance][0]
-            if self.distance[u] == sys.maxint:
+            if self.distance[u] == sys.maxsize:
                 break
             if u in self.endNodes:
                 break

@@ -18,4 +18,4 @@ while sol < 10 ** 15:
     nom = x * c - b
     if nom % a == 0:
         sol = nom // a
-print sol
+print(sol)

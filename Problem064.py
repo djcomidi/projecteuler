@@ -1,4 +1,4 @@
-from EulerTools import is_square
+from gmpy2 import is_square
 
 
 def get_period(num):
@@ -14,7 +14,7 @@ def get_period(num):
 
 
 count_odd = 0
-for n in xrange(2, 10001):
+for n in range(2, 10001):
     if not is_square(n):
         count_odd += get_period(n) & 1
-print count_odd
+print(count_odd)

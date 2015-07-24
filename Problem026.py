@@ -11,9 +11,10 @@ def count_recur(n):
 
 max_recur = 0
 max_recur_n = 0
-for d in xrange(2, 1000):
+for d in range(2, 1000):
     d_recur = count_recur(d)
     if d_recur > max_recur:
         max_recur = d_recur
         max_recur_n = d
-print "1/%d has a %d-digit recurring cycle" % (max_recur_n, max_recur)
+message = "1/%d has a %d-digit recurring cycle" % (max_recur_n, max_recur)
+print(message)

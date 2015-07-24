@@ -17,4 +17,4 @@ while not found:
     if not have_same_digits(n, 6 * n):
         continue
     found = True
-print n
+print(n)

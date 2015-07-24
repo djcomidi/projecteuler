@@ -26,4 +26,5 @@ def findperms(mask="", requireds=set("01A")):
 
 
 val = findperms()
-print hex(val)[2:].upper()
+result = hex(val)[2:].upper()
+print(result)

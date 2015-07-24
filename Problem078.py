@@ -20,4 +20,5 @@ while pVals[-1] % 10 ** 6 != 0:
     while get_term(t) <= n:
         t, pVal = t + 1, pVal + (get_sign(t) * pVals[n - get_term(t)])
     pVals.append(pVal % 10 ** 7)
-print len(pVals) - 1
+result = len(pVals) - 1
+print(result)

@@ -17,4 +17,5 @@ def get_term(i):
 
 
 n, d = get_term(100)
-print sum(map(int, list(str(n))))
+sumd = sum([int(x) for x in str(n)])
+print(sumd)

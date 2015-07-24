@@ -1,4 +1,4 @@
-from EulerTools import is_prime
+from gmpy2 import is_prime
 
 
 def funca(num):
@@ -18,4 +18,5 @@ while len(composites) < 25:
         n += 2
     if (n - 1) % funca(n) == 0:
         composites.append(n)
-print sum(composites)
+total = sum(composites)
+print(total)

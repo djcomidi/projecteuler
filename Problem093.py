@@ -1,7 +1,6 @@
 from itertools import combinations
 from itertools import permutations
 from itertools import product
-from string import maketrans
 
 
 def eval_rpn(rpn):
@@ -30,7 +29,7 @@ for keyList in combinations("123456789", 4):
     for numbers in permutations(keyList):
         for ops in product("+-*/", repeat=3):
             symbols = ''.join(numbers) + ''.join(ops)
-            trans = maketrans("abcdXYZ", symbols)
+            trans = str.maketrans("abcdXYZ", symbols)
             for template in TEMPLATES:
                 rpn = template.translate(trans)
                 if key in RPNS:
@@ -39,7 +38,7 @@ for keyList in combinations("123456789", 4):
                     RPNS[key] = [rpn]
 
 maxSeq, maxSeqKey = 0, ""
-for key, rpns in RPNS.items():
+for key, rpns in list(RPNS.items()):
     evals = set(eval_rpn(rpn) for rpn in rpns)
     n = 0
     while n + 1 in evals:
@@ -47,4 +46,5 @@ for key, rpns in RPNS.items():
     if n > maxSeq:
         maxSeq, maxSeqKey = n, key
 
-print maxSeq, maxSeqKey
+result = "maxSeq=%d maxSeqKey=%s" % (maxSeq, maxSeqKey)
+print(result)

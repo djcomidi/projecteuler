@@ -1,9 +1,9 @@
-from EulerTools import is_square
+from gmpy2 import is_square
 
 perims = [0] * 1001
 
-for a in xrange(1, 400):
-    for b in xrange(a + 1, 400):
+for a in range(1, 400):
+    for b in range(a + 1, 400):
         c2 = a ** 2 + b ** 2
         if not is_square(c2):
             continue
@@ -12,4 +12,5 @@ for a in xrange(1, 400):
         if p <= 1000:
             perims[p] += 1
 
-print perims.index(max(perims))
+idx = perims.index(max(perims))
+print(idx)

@@ -1,5 +1,5 @@
-from EulerTools import is_prime
-from EulerTools import next_prime
+from gmpy2 import is_prime
+from gmpy2 import next_prime
 
 LIMIT = 10 ** 6
 
@@ -14,4 +14,5 @@ while pStart < LIMIT:
         primes.append(next_prime(primes[-1]))
     pStart = next_prime(pStart)
 
-print max_terms, max_prime
+message = "%d, %d" % (max_terms, max_prime)
+print(message)

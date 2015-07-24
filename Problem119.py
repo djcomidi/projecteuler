@@ -1,18 +1,15 @@
 def sum_digits(num):
-    return sum(map(int, list(str(num))))
+    return sum([int(x) for x in str(num)])
 
 
 arr = set()
-for n in xrange(2, 1000):
-    for t in xrange(1000):
+for n in range(2, 1000):
+    for t in range(1000):
         if n ** t < 10:
             continue
         if n ** t > 10 ** 15:
             break
         if sum_digits(n ** t) == n:
             arr.add(n ** t)
-print len(arr)
-arr = sorted(arr)
-print arr[1]
-print arr[9]
-print arr[29]
+result = sorted(arr)[-1]
+print(result)

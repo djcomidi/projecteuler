@@ -12,4 +12,4 @@ while funca(n) < 10 ** 6:
     n += 2
     if n % 5 == 0:
         n += 2
-print n
+print(n)

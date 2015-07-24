@@ -8,7 +8,7 @@ def triangle_has_origin(ax, ay, bx, by, cx, cy):
 have_origin = 0
 with open('Problem102_triangles.txt') as in_file:
     for line in in_file.readlines():
-        pAx, pAy, pBx, pBy, pCx, pCy = map(int, line.strip().split(','))
-        if triangle_has_origin(pAx, pAy, pBx, pBy, pCx, pCy):
+        ax, ay, bx, by, cx, cy = [int(x) for x in line.strip().split(',')]
+        if triangle_has_origin(ax, ay, bx, by, cx, cy):
             have_origin += 1
-print have_origin
+print(have_origin)

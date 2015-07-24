@@ -13,4 +13,4 @@ while True:
         t = polygonal(3, tN)
     if h == p == t:
         break
-print t
+print(t)

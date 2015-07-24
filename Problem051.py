@@ -1,5 +1,5 @@
-from EulerTools import is_prime
-from EulerTools import next_prime
+from gmpy2 import is_prime
+from gmpy2 import next_prime
 
 LIMIT = 10 ** 6
 
@@ -18,13 +18,13 @@ def has_multiple(prime, d):
 masks = [[], [], []]
 p = 2
 while p < LIMIT:
-    for i in xrange(3):
+    for i in range(3):
         if has_multiple(p, i):
             masks[i].append(p)
     p = next_prime(p)
 
 min_prime = LIMIT
-for i in xrange(3):
+for i in range(3):
     for p in masks[i]:
         s = str(p)
         count = 0
@@ -32,4 +32,4 @@ for i in xrange(3):
             if is_prime(int(s.replace(str(i), c))):
                 count += 1
         if count == 8:
-            print p
+            print(p)

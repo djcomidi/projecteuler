@@ -1,4 +1,5 @@
 from itertools import permutations
+
 #      [0]
 #         \      [3]
 #        [1]      /
@@ -11,7 +12,7 @@ from itertools import permutations
 
 maxsol = 0
 for perm in permutations("0123456789"):
-    arr = map(lambda d: int(d) + 1, perm)
+    arr = [int(d) + 1 for d in perm]
     if arr[0] > 6:
         break
     if arr[0] != min([arr[0], arr[3], arr[5], arr[7], arr[9]]):
@@ -31,4 +32,4 @@ for perm in permutations("0123456789"):
     solVal = int(solStr)
     if len(solStr) == 16:
         maxsol = max(maxsol, solVal)
-print maxsol
+print(maxsol)

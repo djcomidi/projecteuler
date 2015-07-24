@@ -1,7 +1,7 @@
 def get_subsets(a):
     subsets = []
-    for i in xrange(1, 2 ** len(a)):
-        subsets.append(set(a[j] for j in xrange(len(a)) if i & (2 ** j) > 0))
+    for i in range(1, 2 ** len(a)):
+        subsets.append(set(a[j] for j in range(len(a)) if i & (2 ** j) > 0))
     return subsets
 
 
@@ -24,7 +24,7 @@ def is_special_set(a):
 sumspecials = 0
 with open('Problem105_sets.txt') as in_file:
     for line in in_file.readlines():
-        arr = map(int, line.strip().split(','))
+        arr = [int(x) for x in line.strip().split(',')]
         if is_special_set(arr):
             sumspecials += sum(arr)
-print sumspecials
+print(sumspecials)

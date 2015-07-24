@@ -1,12 +1,10 @@
-from EulerTools import fac
-
-
-def sum_digits_fac(num):
-    return sum(fac(i) for i in map(int, list(str(num))))
-
+from gmpy2 import fac
 
 total = 0
-for n in xrange(3, fac(9)):
-    if n == sum_digits_fac(n):
+for n in range(3, fac(9)):
+    sumfacs, t = 0, n
+    while t > 0:
+        sumfacs, t = sumfacs + fac(t % 10), t // 10
+    if n == sumfacs:
         total += n
-print total
+print(total)

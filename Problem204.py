@@ -1,3 +1,6 @@
+from gmpy2 import next_prime
+
+
 def find_hamming(hamming, primes, limit):
     if hamming > limit:
         return 0
@@ -7,6 +10,9 @@ def find_hamming(hamming, primes, limit):
     return total
 
 
-PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59]
-PRIMES += [61, 67, 71, 73, 79, 83, 89, 97]
-print find_hamming(1, PRIMES, 10 ** 9)
+theprimes, p = [], 2
+while p < 100:
+    theprimes.append(p)
+    p = next_prime(p)
+result = find_hamming(1, theprimes, 10 ** 9)
+print(result)

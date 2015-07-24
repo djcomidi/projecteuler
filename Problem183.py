@@ -3,7 +3,7 @@ from math import log10
 
 def calc_m(n):
     mmax, p = 1, 0.0
-    for m in xrange(1, n // 2 + 1):
+    for m in range(1, n // 2 + 1):
         t = m * (log10(n) - log10(m))
         if t > p:
             p, mmax = t, m
@@ -29,4 +29,5 @@ def calc_d(n):
         return n
 
 
-print sum(calc_d(n) for n in xrange(5, 10001))
+total = sum(calc_d(n) for n in range(5, 10001))
+print(total)

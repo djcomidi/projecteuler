@@ -1,6 +1,6 @@
-from EulerTools import fac
+from gmpy2 import fac
 
-FACS = [int(fac(i)) for i in xrange(10)]
+FACS = [int(fac(i)) for i in range(10)]
 memochains = {}
 
 
@@ -25,7 +25,7 @@ def chain_length(num):
 
 
 chain_count = 0
-for n in xrange(1, 10 ** 6):
+for n in range(1, 10 ** 6):
     if chain_length(n) == 60:
         chain_count += 1
-print chain_count
+print(chain_count)

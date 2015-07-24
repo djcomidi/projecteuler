@@ -4,6 +4,6 @@ while len(s) <= 10 ** 6:
     s += str(i)
     i += 1
 prod = 1
-for e in xrange(7):
+for e in range(7):
     prod *= int(s[10 ** e])
-print prod
+print(prod)

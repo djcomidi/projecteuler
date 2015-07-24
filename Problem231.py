@@ -1,4 +1,4 @@
-from EulerTools import next_prime
+from gmpy2 import next_prime
 
 N, K = 20000000, 15000000
 
@@ -18,4 +18,4 @@ while p <= N:
     pifnk = primes_in_fac(p, N - K)
     sumfacs += p * (pifn - pifk - pifnk)
     p = next_prime(p)
-print sumfacs
+print(sumfacs)

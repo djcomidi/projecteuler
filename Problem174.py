@@ -10,7 +10,7 @@ def find_laminae(tilesused=0, outersize=0, uniques=None):
     if tilesused > LIMIT:
         return
     if outersize == 0:
-        for size in xrange(2, LIMIT // 4 + 1):
+        for size in range(2, LIMIT // 4 + 1):
             find_laminae(tilesused + (size * 4), size, uniques)
     else:
         uniques[tilesused] += 1
@@ -20,5 +20,5 @@ def find_laminae(tilesused=0, outersize=0, uniques=None):
 
 distincts = [0] * (LIMIT + 1)
 find_laminae(0, 0, distincts)
-print distincts.count(15)
-print sum(distincts.count(n) for n in xrange(1, 11))
+total = sum(distincts.count(n) for n in range(1, 11))
+print(total)

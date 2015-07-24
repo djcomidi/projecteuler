@@ -14,4 +14,4 @@ count_triangles = 0
 for word in words:
     if is_triangle_word(word):
         count_triangles += 1
-print count_triangles
+print(count_triangles)

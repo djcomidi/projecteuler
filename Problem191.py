@@ -16,4 +16,5 @@ def backtrack(daysleft, lcount=0, acount=0):
     return total
 
 
-print backtrack(30)
+result = backtrack(30)
+print(result)

@@ -20,4 +20,4 @@ while len(toCheck) > 0:
     valids = [n for n in toCheck if t % n == 0]
     total += sum(t // n for n in valids)
     toCheck -= set(valids)
-print total
+print(total)

@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-
 from EulerTools import prime_factors
 
-print max(prime_factors(600851475143))
+max_factor = max(prime_factors(600851475143))
+print(max_factor)

@@ -1,4 +1,4 @@
-from EulerTools import fac
+from gmpy2 import fac
 
 # starting from index 0, so millionth perm has index 999999
 n = 10 ** 6 - 1
@@ -9,4 +9,4 @@ while len(perm) < 10:
     pos, n = divmod(n, d)
     perm += s[pos]
     s.remove(perm[-1])
-print perm
+print(perm)

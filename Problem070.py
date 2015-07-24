@@ -1,9 +1,4 @@
-from EulerTools import next_prime
-
-
-def is_permutation(a, b):
-    return sorted(str(a)) == sorted(str(b))
-
+from gmpy2 import next_prime
 
 MAXPRIME = 4000
 min_ratio = 3.0
@@ -16,10 +11,11 @@ while pA < MAXPRIME:
         if n > 10 ** 7:
             break
         totn = (pA - 1) * (pB - 1)
-        if is_permutation(n, totn):
+        if sorted(str(n)) == sorted(str(totn)):
             ratio = (1.0 * n) / totn
             if ratio < min_ratio:
                 min_ratio, min_n = ratio, n
         pB = next_prime(pB)
     pA = next_prime(pA)
-print min_n, min_ratio
+message = "n=%d ratio=%d" % (min_n, min_ratio)
+print(message)

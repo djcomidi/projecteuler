@@ -1,10 +1,10 @@
-from EulerTools import is_square
+from gmpy2 import is_square
 
 LIMIT = 1000
 mids = {}
-for a in xrange(1, LIMIT):
+for a in range(1, LIMIT):
     a2 = a ** 2
-    for b in xrange(a + 2, LIMIT, 2):
+    for b in range(a + 2, LIMIT, 2):
         b2 = b ** 2
         mid = (a2 + b2) // 2
         mids[mid] = mids.get(mid, []) + [a2]
@@ -22,4 +22,5 @@ for a in xrange(1, LIMIT):
                 continue
             if not is_square(y + z):
                 continue
-            print x, y, z, x + y + z
+            message = "%d,%d,%d => %d" % (x, y, z, x + y + z)
+            print(message)

@@ -8,11 +8,12 @@
 
 LIMIT = 50 * 10 ** 6
 ways = [0] * LIMIT
-for y in xrange(1, LIMIT):
-    for k in xrange(y // 4 + 1, y):
+for y in range(1, LIMIT):
+    for k in range(y // 4 + 1, y):
         n = y * (4 * k - y)
         if n >= LIMIT:
             break
         if n > 0:
             ways[n] += 1
-print ways.count(1)
+result = ways.count(1)
+print(result)

@@ -18,7 +18,7 @@ def roman_to_western(roman):
 def western_to_roman(western):
     roman = ""
     while western > 0:
-        n = max(filter(lambda v: v <= western, VALUES))
+        n = max([v for v in VALUES if v <= western])
         roman += ROMANS[VALUES.index(n)]
         western -= n
     return roman
@@ -32,5 +32,4 @@ for r in romans:
     w = roman_to_western(r)
     romanshort = western_to_roman(w)
     savings += len(r) - len(romanshort)
-
-print savings
+print(savings)

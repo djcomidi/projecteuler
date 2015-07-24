@@ -9,4 +9,4 @@ while 100 * len(bouncies) < pct * n:
         s = ''.join(sorted(str(n)))
         if (s != str(n)) and (s[::-1] != str(n)):
             bouncies.add(n)
-print n
+print(n)

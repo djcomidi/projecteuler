@@ -1,4 +1,5 @@
-from EulerTools import fac
+from gmpy2 import fac
 
 w, h = 20, 20
-print fac(w + h) / (fac(w) * fac(h))
+result = fac(w + h) / (fac(w) * fac(h))
+print(result)

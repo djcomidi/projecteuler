@@ -1,4 +1,4 @@
-from EulerTools import next_prime
+from gmpy2 import next_prime
 
 
 def get_confracs(n):
@@ -50,5 +50,5 @@ while p < 1000:
     if my_x > max_x:
         max_x, min_d = my_x, p
     p = next_prime(p)
-print "min D:", min_d
-print "max x:", max_x
+message = "min D: %d\nmax x: %d" % (min_d, max_x)
+print(message)

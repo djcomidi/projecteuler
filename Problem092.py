@@ -13,7 +13,7 @@ def find_ending(n):
 
 
 count = 0
-for n in xrange(1, 10 ** 7):
+for n in range(1, 10 ** 7):
     if find_ending(n) == 89:
         count += 1
-print count
+print(count)

@@ -1,4 +1,4 @@
-from EulerTools import is_prime
+from gmpy2 import is_prime
 
 # n^3 + p*n^2 = x^3
 # n^2*(n+p) = x^3
@@ -17,4 +17,4 @@ while True:
         break
     if is_prime(p):
         total += 1
-print total
+print(total)

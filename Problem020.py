@@ -1,3 +1,5 @@
-from EulerTools import fac
+from gmpy2 import fac
 
-print sum(map(int, list(str(fac(100)))))
+digits = [int(t, 10) for t in str(fac(100))]
+total = sum(digits)
+print(total)

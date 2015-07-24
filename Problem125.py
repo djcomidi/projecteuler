@@ -1,7 +1,7 @@
 from EulerTools import is_palindrome
 
 solutions = set()
-for start in xrange(1, 10 ** 4):
+for start in range(1, 10 ** 4):
     length = 0
     val = start ** 2
     while True:
@@ -11,4 +11,5 @@ for start in xrange(1, 10 ** 4):
             break
         if is_palindrome(val):
             solutions.add(val)
-print sum(solutions)
+total = sum(solutions)
+print(total)

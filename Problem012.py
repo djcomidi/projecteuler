@@ -4,4 +4,5 @@ from EulerTools import polygonal
 t = 1
 while number_of_divisors(polygonal(3, t)) < 500:
     t += 1
-print polygonal(3, t)
+polygon = polygonal(3, t)
+print(polygon)

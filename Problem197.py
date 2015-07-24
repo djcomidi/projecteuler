@@ -10,4 +10,5 @@ uVal = -1
 while uVal not in uList:
     uList.append(uVal)
     uVal = func(uVal)
-print sum(uList[-2:])
+total = sum(uList[-2:])
+print(total)

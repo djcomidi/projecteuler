@@ -8,9 +8,12 @@ def count_terms(n, cache=None):
     if not cache:
         cache = {1: 0}
     if n not in cache:
-        fib = max(filter(lambda f: f < n, FIBS))
-        cache[n] = n - fib + count_terms(n - fib) + count_terms(fib)
+        fib = max([f for f in FIBS if f < n])
+        vala = count_terms(n - fib, cache)
+        valb = count_terms(fib, cache)
+        cache[n] = n - fib + vala + valb
     return cache[n]
 
 
-print count_terms(LIMIT)
+result = count_terms(LIMIT)
+print(result)

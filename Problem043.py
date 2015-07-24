@@ -20,4 +20,4 @@ for perm in permutations("0123456789"):
     if int(s[7:]) % 17 != 0:
         continue
     total += int(s, 10)
-print total
+print(total)

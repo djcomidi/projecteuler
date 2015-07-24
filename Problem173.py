@@ -3,7 +3,7 @@ def find_laminae(tilesleft, outersize=0):
         return 0
     if outersize == 0:
         total = 0
-        for size in xrange(2, tilesleft // 4 + 1):
+        for size in range(2, tilesleft // 4 + 1):
             total += find_laminae(tilesleft - (size * 4), size)
         return total
     else:
@@ -11,4 +11,5 @@ def find_laminae(tilesleft, outersize=0):
         return 1 + find_laminae(tilesleft - newsize * 4, newsize)
 
 
-print find_laminae(10 ** 6)
+result = find_laminae(10 ** 6)
+print(result)

@@ -14,7 +14,7 @@ def value_of_hand(hand):
     ranks = sorted([RANKS.index(card[0]) for card in hand], reverse=True)
     # A - Z
     suits = sorted([card[1] for card in hand])
-    is_straight = all([max(ranks) - ranks[i] == i for i in xrange(5)])
+    is_straight = all([max(ranks) - ranks[i] == i for i in range(5)])
     is_flush = len(set(suits)) == 1
     rankcounts = [ranks.count(r) for r in set(ranks)]
     if is_straight and is_flush and max(ranks) == 14:
@@ -41,9 +41,9 @@ def value_of_hand(hand):
 winsPlayerA = 0
 with open('Problem054_poker.txt') as in_file:
     for line in in_file.readlines():
-        handsAB = line[:-2].split(' ')
+        handsAB = line[:-1].split(' ')
         typeA, highA = value_of_hand(handsAB[:5])
         typeB, highB = value_of_hand(handsAB[5:])
         if typeA > typeB or (typeA == typeB and highA > highB):
             winsPlayerA += 1
-print winsPlayerA
+print(winsPlayerA)

@@ -1,4 +1,5 @@
-from EulerTools import next_prime
+from gmpy2 import next_prime
+
 from EulerTools import Memoize
 
 
@@ -16,4 +17,5 @@ def get_ways(num, minp=2):
 n = 1
 while get_ways(n) < 5000:
     n += 1
-print n, get_ways(n)
+message = "%d, %d" % (n, get_ways(n))
+print(message)

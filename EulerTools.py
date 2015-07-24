@@ -2,21 +2,10 @@
 # Imports
 ########################################################################
 
-from sys import hexversion
-import functools
-
-from gmpy import bincoef
-from gmpy import fac
-from gmpy import fib
-from gmpy import gcd
-from gmpy import is_prime
-from gmpy import is_square
-from gmpy import next_prime
-
-if hexversion >= 0x03000000:
-    from subprocess import check_output
-else:
-    from commands import getoutput
+from functools import partial
+from subprocess import check_output
+from gmpy2 import is_prime
+from gmpy2 import next_prime
 
 
 ########################################################################
@@ -27,20 +16,13 @@ def aliquot_sum(n):
     return sum_of_divisors(n) - n
 
 
-def execute_command(cmd, args=""):
-    if hexversion >= 0x03000000:
-        return check_output([cmd, str(args)])
-    else:
-        return getoutput("%s %s" % (cmd, str(args)))
-
-
 def is_palindrome(x):
     s = str(x)
     return s == s[::-1]
 
 
 def is_pandigital(x, lowest=1, highest=9):
-    return sorted(str(x)) == map(str, range(lowest, highest + 1))
+    return sorted(str(x)) == [str(i) for i in range(lowest, highest + 1)]
 
 
 def is_triangle(t):
@@ -69,12 +51,15 @@ def polygonal(i, n):
 
 
 def prime_factors(n):
-    p, primes = 1, []
-    while n > 1:
-        p = next_prime(p)
-        while n % p == 0:
-            primes, n = primes + [int(p)], n // p
+    output = check_output(["factor", str(n)]).decode()[:-1]
+    primes = [int(p) for p in output.split(" ")[1:]]
     return primes
+    # p, primes = 1, []
+    # while n > 1:
+    #     p = next_prime(p)
+    #     while n % p == 0:
+    #         primes, n = primes + [int(p)], n // p
+    # return primes
 
 
 def prime_factors_dict(n):
@@ -85,8 +70,8 @@ def prime_factors_dict(n):
 def sigma(x, n):
     factors = prime_factors_dict(n)
     sigmavalue = 1
-    for p, e in factors.items():
-        sigmavalue *= sum([p ** (x * t) for t in xrange(0, e + 1)])
+    for p in factors:
+        sigmavalue *= sum([p ** (x * t) for t in range(0, factors[p] + 1)])
     return sigmavalue
 
 
@@ -98,7 +83,7 @@ def totient(n):
     if is_prime(n):
         return n - 1
     phi = n
-    for factor in prime_factors_dict(n).keys():
+    for factor in prime_factors_dict(n):
         phi = (phi * (factor - 1)) // factor
     return phi
 
@@ -136,4 +121,4 @@ class Memoize(object):
 
     def __get__(self, obj):
         """Support instance methods."""
-        return functools.partial(self.__call__, obj)
+        return partial(self.__call__, obj)

@@ -2,6 +2,7 @@ collatzes = {1: 1}
 
 
 def collatz_terms(idx):
+    global collatzes
     if idx in collatzes:
         return collatzes[idx]
     if idx & 1 == 0:
@@ -14,8 +15,8 @@ def collatz_terms(idx):
 
 maxterms = 0
 maxstart = 0
-for n in xrange(1, 1000000):
+for n in range(1, 1000000):
     terms = collatz_terms(n)
     if terms > maxterms:
         maxterms, maxstart = terms, n
-print maxstart
+print(maxstart)

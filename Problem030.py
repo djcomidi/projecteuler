@@ -3,7 +3,7 @@ def sum_digits_power(n, e):
 
 
 sum_n = 0
-for n in xrange(2, 6 * 9 ** 5 + 1):
+for n in range(2, 6 * 9 ** 5 + 1):
     if n == sum_digits_power(n, 5):
         sum_n += n
-print sum_n
+print(sum_n)

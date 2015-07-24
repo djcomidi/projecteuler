@@ -1,4 +1,4 @@
-from EulerTools import next_prime
+from gmpy2 import next_prime
 
 LIMIT = 5 * 10 ** 7
 p2s = []
@@ -19,4 +19,5 @@ for p4 in p4s:
         for p2 in p2s:
             if p2 + p3 + p4 < LIMIT:
                 valids.add(p2 + p3 + p4)
-print len(valids)
+size = len(valids)
+print(size)

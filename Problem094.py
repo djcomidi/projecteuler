@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-
-from EulerTools import is_square
+from gmpy2 import is_square
 
 
 def has_int_area(a, b, c):
@@ -9,11 +7,13 @@ def has_int_area(a, b, c):
 
 
 total = 0
-for side in xrange(3, 333333334, 2):
+for side in range(3, 166666667, 2):
     if has_int_area(side, side, side - 1):
         total += 3 * side - 1
-        print "%9d %9d %9d %d" % (side, side, side - 1, total)
+        message = "%9d %9d %9d %d" % (side, side, side - 1, total)
+        print(message)
     if has_int_area(side, side, side + 1):
         total += 3 * side + 1
-        print "%9d %9d %9d %d" % (side, side, side + 1, total)
-print total
+        message = "%9d %9d %9d %d" % (side, side, side + 1, total)
+        print(message)
+print(total)

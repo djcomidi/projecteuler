@@ -4,7 +4,7 @@ def find_rings(n, ring=""):
     if ring[-n:] in ring[:-1]:
         return 0
     if len(ring) == 2 ** n:
-        if any(ring[-i:] + ring[:n - i] in ring for i in xrange(n)):
+        if any(ring[-i:] + ring[:n - i] in ring for i in range(n)):
             return 0
         return int(ring, 2)
     total = 0
@@ -13,4 +13,5 @@ def find_rings(n, ring=""):
     return total
 
 
-print find_rings(5)
+result = find_rings(5)
+print(result)

@@ -1,5 +1,6 @@
 LIMIT = 10 ** 10
 sol = 0
-for i in xrange(1, 1001):
+for i in range(1, 1001):
     sol += pow(i, i, LIMIT)
-print sol % LIMIT
+rest = sol % LIMIT
+print(rest)

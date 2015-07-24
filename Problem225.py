@@ -9,4 +9,5 @@ while len(nondivs) != 124:
         isDiv = t[2] == 0
     if not isDiv:
         nondivs.append(n)
-print nondivs[-1]
+last = nondivs[-1]
+print(last)

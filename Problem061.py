@@ -19,7 +19,7 @@ for i in [3, 4, 5, 6, 7, 8]:
 
 # make sure every polygonal can be part of a chain
 commons = beginnings & endings
-for i in xrange(6):
+for i in range(6):
     newfourdigits = []
     for fd in fourdigits[i]:
         if fd % 100 in commons and fd // 100 in commons:
@@ -34,8 +34,8 @@ def find_chain(rows, terms):
             find_chain([5], [prime])
     elif len(rows) == 6:
         if terms[5] % 100 == terms[0] // 100:
-            print zip(rows, terms)
-            print sum(terms)
+            message = "%s, %d" % (list(zip(rows, terms)), sum(terms))
+            print(message)
     else:
         for r in set(range(6)) - set(rows):
             for prime in fourdigits[r]:

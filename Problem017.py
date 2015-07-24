@@ -28,6 +28,6 @@ def get_full(number):
 
 
 letters = 0
-for n in xrange(1, 1001):
+for n in range(1, 1001):
     letters += len(get_full(n))
-print letters
+print(letters)

@@ -1,4 +1,4 @@
-from EulerTools import next_prime
+from gmpy2 import next_prime
 
 sequences = {}
 p = next_prime(10 ** 3)
@@ -14,8 +14,9 @@ for primes in sorted(sequences.values()):
     size = len(primes)
     if size < 3:
         continue
-    for a in xrange(size):
-        for b in xrange(a + 1, size):
+    for a in range(size):
+        for b in range(a + 1, size):
             pA, pB, pC = primes[a], primes[b], 2 * primes[b] - primes[a]
             if pC in primes:
-                print "%d%d%d" % (pA, pB, pC)
+                message = "%d%d%d" % (pA, pB, pC)
+                print(message)

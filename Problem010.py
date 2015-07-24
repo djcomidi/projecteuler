@@ -1,8 +1,8 @@
-from EulerTools import next_prime
+from gmpy2 import next_prime
 
 p = next_prime(1)
 total = 0
 while p < 2000000:
     total += p
     p = next_prime(p)
-print total
+print(total)

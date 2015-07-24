@@ -1,5 +1,5 @@
-from EulerTools import is_prime
-from EulerTools import next_prime
+from gmpy2 import is_prime
+from gmpy2 import next_prime
 
 
 def count_func(a, b):
@@ -20,4 +20,4 @@ while pB < 1000:
                 max_prod = k * pA * pB
         pA = next_prime(pA)
     pB = next_prime(pB)
-print max_prod
+print(max_prod)

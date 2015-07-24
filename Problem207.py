@@ -9,4 +9,4 @@ while solsPerfect * 12345 >= sols:
     if n % (2 ** t) == 0:
         solsPerfect += 1
         t += 1
-print n
+print(n)

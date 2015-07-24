@@ -4,7 +4,7 @@ def funca(x, n):
 LIMIT = 10 ** 6
 ways = [0] * LIMIT
 
-for x in xrange(1, LIMIT):
+for x in range(1, LIMIT):
     n = x // 3
     while True:
         val = funca(x, n)
@@ -14,5 +14,5 @@ for x in xrange(1, LIMIT):
             ways[funca(x, n)] += 1
         n += 1
 
-print ways.index(10)
-print ways.count(10)
+result = ways.count(10)
+print(result)

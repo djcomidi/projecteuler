@@ -1,6 +1,5 @@
+from gmpy2 import is_square
 from itertools import combinations
-
-from EulerTools import is_square
 
 
 def testdice(facesa, facesb):
@@ -14,14 +13,14 @@ def testdice(facesa, facesb):
         for faceB in setb:
             numbers.add(10 * faceA + faceB)
             numbers.add(10 * faceB + faceA)
-    squares = filter(lambda num: num > 0 and is_square(num), numbers)
+    squares = [num for num in numbers if num > 0 and is_square(num)]
     return len(squares) == 9
 
 
-facesList = [map(int, faces) for faces in combinations("0123456789", 6)]
+faces = [[int(x) for x in cmb] for cmb in combinations("0123456789", 6)]
 arrangements = 0
-for i, facesA in enumerate(facesList):
-    for facesB in facesList[i + 1:]:
+for i, facesA in enumerate(faces):
+    for facesB in faces[i + 1:]:
         if testdice(facesA, facesB):
             arrangements += 1
-print arrangements
+print(arrangements)

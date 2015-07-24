@@ -1,11 +1,12 @@
-from EulerTools import mul
+from operator import mul
+from functools import reduce
 
 data = ""
 with open('Problem008_data.txt') as in_file:
     for line in in_file.readlines():
         data += line[:-1]
-max_prod = 0
-for i in xrange(len(data) - 5):
-    five_digits = map(int, list(data[i:i + 5]))
-    max_prod = max(max_prod, reduce(mul, five_digits, 1))
-print max_prod
+max_prod, size = 0, 13
+for i in range(len(data) - size):
+    chain = [int(t) for t in data[i:i + size]]
+    max_prod = max(max_prod, reduce(mul, chain, 1))
+print(max_prod)

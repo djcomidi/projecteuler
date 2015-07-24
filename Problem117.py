@@ -5,9 +5,10 @@ from EulerTools import Memoize
 def fill_count(size):
     ways = 1
     for w in [2, 3, 4]:
-        for pos in xrange(size - w + 1):
+        for pos in range(size - w + 1):
             ways += fill_count(size - (pos + w))
     return ways
 
 
-print fill_count(50)
+result = fill_count(50)
+print(result)

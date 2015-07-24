@@ -1,6 +1,5 @@
+from gmpy2 import is_prime
 from itertools import product, permutations
-
-from EulerTools import is_prime
 
 NUMBERS = "0123456789"
 MAXLEN = 10
@@ -22,6 +21,8 @@ for repDigit in NUMBERS:
         if len(arr) > 0:
             M[d], N[d], S[d] = t, len(arr), sum(arr)
 
-for i in xrange(10):
-    print i, M[i], '\t', N[i], '\t', S[i]
-print sum(S)
+for i in range(10):
+    message = "%d %2d %2d %d" % (i, M[i], N[i], S[i])
+    print(message)
+total = sum(S)
+print(total)

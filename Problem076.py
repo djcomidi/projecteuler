@@ -13,4 +13,5 @@ def p(k, n):
     return val
 
 
-print p(1, 100) - 1
+result = p(1, 100) - 1
+print(result)

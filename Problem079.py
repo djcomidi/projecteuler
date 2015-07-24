@@ -1,8 +1,8 @@
-precedes = [[False for c in xrange(10)] for r in xrange(10)]
+precedes = [[False for c in range(10)] for r in range(10)]
 digits = set()
 with open('Problem079_keylog.txt') as in_file:
     for line in in_file.readlines():
-        keys = map(int, list(line[:-1]))
+        keys = [int(x) for x in line[:-1]]
         precedes[keys[0]][keys[1]] = True
         precedes[keys[0]][keys[2]] = True
         precedes[keys[1]][keys[2]] = True
@@ -11,4 +11,4 @@ with open('Problem079_keylog.txt') as in_file:
 summary = [(precedes[d].count(True), d) for d in digits]
 summary.sort(reverse=True)
 sol = ''.join(str(s[1]) for s in summary)
-print sol
+print(sol)

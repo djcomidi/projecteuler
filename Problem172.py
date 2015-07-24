@@ -5,16 +5,18 @@ from EulerTools import Memoize
 def find_numbers(length, arr=None):
     if length == 0:
         return 1
-    if arr is None:
-        arr = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+    arr = list(arr) if arr else [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
     if arr[0] == 2 and sum(arr) == 29:
         return 0
     valids = 0
-    for i in xrange(10):
+    for i in range(10):
+        if arr[i] == 0:
+            continue
         arr[i] -= 1
-        valids += find_numbers(length - 1, arr)
+        valids += find_numbers(length - 1, tuple(arr))
         arr[i] += 1
     return valids
 
 
-print find_numbers(18)
+result = find_numbers(18)
+print(result)

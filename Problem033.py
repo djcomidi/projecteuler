@@ -1,11 +1,12 @@
-from EulerTools import mul
+from operator import mul
+from functools import reduce
 
 fracs = []
-for nom in xrange(11, 100):
+for nom in range(11, 100):
     if nom % 10 == 0:
         continue
     nomT, nomD = divmod(nom, 10)
-    for denom in xrange(nom + 1, 100):
+    for denom in range(nom + 1, 100):
         if denom % 10 == 0:
             continue
         denomT, denomD = divmod(denom, 10)
@@ -19,4 +20,5 @@ for nom in xrange(11, 100):
             fracs.append((nomD, denomD))
 reduceNom = reduce(mul, [f[1] for f in fracs], 1)
 reduceDenom = reduce(mul, [f[0] for f in fracs], 1)
-print reduceNom // reduceDenom
+result = reduceNom // reduceDenom
+print(result)

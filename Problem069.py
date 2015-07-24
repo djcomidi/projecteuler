@@ -1,7 +1,7 @@
-from EulerTools import next_prime
+from gmpy2 import next_prime
 
 n, p = 1, 2
 while n * p < 10 ** 6 + 1:
     n *= p
     p = next_prime(p)
-print n
+print(n)

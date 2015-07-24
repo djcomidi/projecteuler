@@ -14,9 +14,10 @@ def pay(rest, mincoin=1):
     if rest == 0:
         return 1
     ways = 0
-    for coin in filter(lambda c: mincoin <= c <= rest, COINS):
+    for coin in [c for c in COINS if mincoin <= c <= rest]:
         ways += pay(rest - coin, max(mincoin, coin))
     return ways
 
 
-print pay(200)
+payments = pay(200)
+print(payments)

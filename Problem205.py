@@ -1,18 +1,19 @@
 from itertools import product
 
 total = 1
-pyramidalPete = {}
+ppdict = {}
 for dice in product([1, 2, 3, 4], repeat=9):
-    pyramidalPete[sum(dice)] = pyramidalPete.get(sum(dice), 0) + 1
-total *= sum(pyramidalPete.values())
+    ppdict[sum(dice)] = ppdict.get(sum(dice), 0) + 1
+total *= sum(ppdict.values())
 
-cubicColin = {}
+ccdict = {}
 for dice in product([1, 2, 3, 4, 5, 6], repeat=6):
-    cubicColin[sum(dice)] = cubicColin.get(sum(dice), 0) + 1
-total *= sum(cubicColin.values())
+    ccdict[sum(dice)] = ccdict.get(sum(dice), 0) + 1
+total *= sum(ccdict.values())
 
 ppWins = 0
-for pp in pyramidalPete.keys():
-    for cc in filter(lambda x: x < pp, cubicColin.keys()):
-        ppWins += pyramidalPete[pp] * cubicColin[cc]
-print "%.7f" % (float(ppWins) / total)
+for pp in list(ppdict.keys()):
+    for cc in [x for x in list(ccdict.keys()) if x < pp]:
+        ppWins += ppdict[pp] * ccdict[cc]
+message = "%.7f" % (ppWins / total)
+print(message)
