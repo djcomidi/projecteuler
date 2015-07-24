@@ -1,2 +1,6 @@
 # ignore compiled python files
 *.pyc
+
+# ignore the config dir of PyCharm CE
+.idea/
+
