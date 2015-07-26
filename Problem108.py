@@ -2,7 +2,7 @@ from gmpy2 import next_prime
 from functools import reduce
 from operator import mul
 
-from EulerTools import prime_factors_dict
+from EulerTools import prime_factors_exps
 
 LIMIT = 1000
 e = 1
@@ -17,7 +17,7 @@ while len(factors) > 2:
     if factors[-1] == 1:
         factors = factors[:-1]
     n = reduce(mul, factors, 1)
-    exps = list(prime_factors_dict(n).values())
+    exps = [t[1] for t in prime_factors_exps(n)]
     t = reduce(mul, [2 * e + 1 for e in exps], 1)
     if t >= 2 * LIMIT:
         minn = min(n, minn)

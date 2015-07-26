@@ -5,7 +5,6 @@
 from functools import partial
 from subprocess import check_output
 from gmpy2 import is_prime
-from gmpy2 import next_prime
 
 
 ########################################################################
@@ -46,17 +45,11 @@ def prime_factors(n):
     output = check_output(["factor", str(n)]).decode()[:-1]
     primes = [int(p) for p in output.split(" ")[1:]]
     return primes
-    # p, primes = 1, []
-    # while n > 1:
-    #     p = next_prime(p)
-    #     while n % p == 0:
-    #         primes, n = primes + [int(p)], n // p
-    # return primes
 
 
-def prime_factors_dict(n):
+def prime_factors_exps(n):
     factors = prime_factors(n)
-    return dict((p, factors.count(p)) for p in factors)
+    return sorted([(p, factors.count(p)) for p in set(factors)])
 
 
 def sigma(x, n):
@@ -70,10 +63,9 @@ def sigma(x, n):
              when x=2, it returns the sum of squares of all divisors d<=n
              ... and so on
     """
-    factors = prime_factors_dict(n)
     sigmavalue = 1
-    for p in factors:
-        sigmavalue *= sum([p ** (x * t) for t in range(0, factors[p] + 1)])
+    for p, exp in prime_factors_exps(n):
+        sigmavalue *= sum([p ** (x * t) for t in range(0, exp + 1)])
     return sigmavalue
 
 
@@ -81,7 +73,7 @@ def totient(n):
     if is_prime(n):
         return n - 1
     phi = n
-    for factor in prime_factors_dict(n):
+    for factor in set(prime_factors(n)):
         phi = (phi * (factor - 1)) // factor
     return phi
 
