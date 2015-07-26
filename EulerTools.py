@@ -1,14 +1,5 @@
-########################################################################
-# Imports
-########################################################################
-
 from subprocess import check_output
-from gmpy2 import is_prime
 
-
-########################################################################
-# Functions
-########################################################################
 
 def is_palindrome(x):
     s = str(x)
@@ -70,13 +61,3 @@ def sigma(x, n):
     for p, exp in prime_factors_exps(n):
         sigmavalue *= sum([p ** (x * t) for t in range(0, exp + 1)])
     return sigmavalue
-
-
-def totient(n):
-    if is_prime(n):
-        return n - 1
-    phi = n
-    for factor in set(prime_factors(n)):
-        phi = (phi * (factor - 1)) // factor
-    return phi
-
