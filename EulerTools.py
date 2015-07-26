@@ -12,10 +12,6 @@ from gmpy2 import next_prime
 # Functions
 ########################################################################
 
-def aliquot_sum(n):
-    return sigma(1, n) - n
-
-
 def is_palindrome(x):
     s = str(x)
     return s == s[::-1]

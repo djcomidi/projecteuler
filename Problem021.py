@@ -1,4 +1,8 @@
-from EulerTools import aliquot_sum
+from EulerTools import sigma
+
+
+def aliquot_sum(n):
+    return sigma(1, n) - n
 
 amicables = set()
 

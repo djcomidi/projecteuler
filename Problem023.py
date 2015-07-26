@@ -1,4 +1,9 @@
-from EulerTools import aliquot_sum
+from EulerTools import sigma
+
+
+def aliquot_sum(n):
+    return sigma(1, n) - n
+
 
 LIMIT = 28123
 abundants = set(n for n in range(1, LIMIT + 1) if aliquot_sum(n) > n)
