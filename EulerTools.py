@@ -13,7 +13,7 @@ from gmpy2 import next_prime
 ########################################################################
 
 def aliquot_sum(n):
-    return sum_of_divisors(n) - n
+    return sigma(1, n) - n
 
 
 def is_palindrome(x):
@@ -28,10 +28,6 @@ def is_pandigital(x, lowest=1, highest=9):
 def is_triangle(t):
     n = int((2 * t) ** 0.5)
     return polygonal(3, n) == t
-
-
-def number_of_divisors(n):
-    return sigma(0, n)
 
 
 def polygonal(i, n):
@@ -68,15 +64,21 @@ def prime_factors_dict(n):
 
 
 def sigma(x, n):
+    """
+    The sum of the xth powers of the positive divisors of n.
+
+    :param x: the power to which the positive divisors must be raised
+    :param n: a positive number
+    :return: when x=0, it returns the number of divisors d<=n
+             when x=1, it returns the sum of all divisors d<=n
+             when x=2, it returns the sum of squares of all divisors d<=n
+             ... and so on
+    """
     factors = prime_factors_dict(n)
     sigmavalue = 1
     for p in factors:
         sigmavalue *= sum([p ** (x * t) for t in range(0, factors[p] + 1)])
     return sigmavalue
-
-
-def sum_of_divisors(n):
-    return sigma(1, n)
 
 
 def totient(n):
