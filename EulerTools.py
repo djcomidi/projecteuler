@@ -19,25 +19,29 @@ def is_pandigital(x):
     return sorted(str(x)) == list("123456789")
 
 
-def is_triangle(t):
-    n = int((2 * t) ** 0.5)
-    return polygonal(3, n) == t
+def polygonal(sides, index):
+    """
+    The formulae for generating figurative numbers
+    as specified in https://projecteuler.net/problem=61
 
-
-def polygonal(i, n):
-    if i == 3:  # triangle
-        return (n * (n + 1)) // 2
-    if i == 4:  # square
-        return n ** 2
-    if i == 5:  # pentagonal
-        return (n * (3 * n - 1)) // 2
-    if i == 6:  # hexagonal
-        return n * (2 * n - 1)
-    if i == 7:  # heptagonal
-        return (n * (5 * n - 3)) // 2
-    if i == 8:  # octagonal
-        return n * (3 * n - 2)
-    return -1
+    :param sides: the number of sides the polygon has [3-8]
+    :param index: the index of the figurative number (starts with 1)
+    :return: the figurative number
+    """
+    value = -1
+    if sides == 3:  # triangle
+        value = (index * (index + 1)) // 2
+    if sides == 4:  # square
+        value = index ** 2
+    if sides == 5:  # pentagonal
+        value = (index * (3 * index - 1)) // 2
+    if sides == 6:  # hexagonal
+        value = index * (2 * index - 1)
+    if sides == 7:  # heptagonal
+        value = (index * (5 * index - 3)) // 2
+    if sides == 8:  # octagonal
+        value = index * (3 * index - 2)
+    return value
 
 
 def prime_factors(n):

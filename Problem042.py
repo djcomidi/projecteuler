@@ -1,10 +1,12 @@
 from string import ascii_uppercase
 
-from EulerTools import is_triangle
+from EulerTools import polygonal
 
 
 def is_triangle_word(w):
-    return is_triangle(sum([ascii_uppercase.index(c) + 1 for c in w]))
+    t = sum([ascii_uppercase.index(c) + 1 for c in w])
+    n = int((2 * t) ** 0.5)
+    return polygonal(3, n) == t
 
 
 with open('Problem042_words.txt') as in_file:
