@@ -1,4 +1,4 @@
-from eulertools import is_palindrome
+from tools.euler import is_palindrome
 
 total = 0
 for n in range(1, 10 ** 6, 2):

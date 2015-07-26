@@ -1,6 +1,6 @@
 from gmpy2 import is_square
 
-from eulertools import sigma
+from tools.euler import sigma
 
 print("Sit back and watch the valid solutions scroll by... slowly :(")
 MAXN = 64 * 10 ** 6

@@ -1,4 +1,4 @@
-from eulertools import sigma
+from tools.euler import sigma
 
 
 def aliquot_sum(n):

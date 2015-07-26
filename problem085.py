@@ -1,4 +1,4 @@
-from eulertools import polygonal
+from tools.euler import polygonal
 
 TARGET = 2 * 10 ** 6
 closest, closest_rows, closest_cols = 0, 0, 0

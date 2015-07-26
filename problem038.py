@@ -1,4 +1,4 @@
-from eulertools import is_pandigital
+from tools.euler import is_pandigital
 
 maxs = 0
 for k in range(2, 4):

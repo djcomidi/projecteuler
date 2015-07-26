@@ -1,4 +1,4 @@
-from dijkstra import Dijkstra
+from tools.pathfinding import Dijkstra
 
 matrix = []
 with open('problem082_matrix.txt') as in_file:

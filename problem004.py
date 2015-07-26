@@ -1,4 +1,4 @@
-from eulertools import is_palindrome
+from tools.euler import is_palindrome
 
 max_palin = 0
 for a in range(900, 1000):

@@ -1,4 +1,4 @@
-from eulertools import is_palindrome
+from tools.euler import is_palindrome
 
 solutions = set()
 for start in range(1, 10 ** 4):

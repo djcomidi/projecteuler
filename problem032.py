@@ -1,4 +1,4 @@
-from eulertools import is_pandigital
+from tools.euler import is_pandigital
 
 pans = set([])
 for a in range(1, 50):

@@ -1,4 +1,4 @@
-from astar import AStar
+from tools.pathfinding import AStar
 
 matrix = []
 with open('problem081_matrix.txt') as in_file:

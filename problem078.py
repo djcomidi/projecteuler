@@ -1,4 +1,4 @@
-from eulertools import polygonal
+from tools.euler import polygonal
 
 
 def get_sign(i):

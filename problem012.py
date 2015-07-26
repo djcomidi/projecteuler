@@ -1,4 +1,4 @@
-from eulertools import polygonal, sigma
+from tools.euler import polygonal, sigma
 
 t = 1
 while sigma(0, polygonal(3, t)) < 500:

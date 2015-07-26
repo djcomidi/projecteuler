@@ -1,6 +1,6 @@
 from string import ascii_uppercase
 
-from eulertools import polygonal
+from tools.euler import polygonal
 
 
 def is_triangle_word(w):

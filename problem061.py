@@ -1,4 +1,4 @@
-from eulertools import polygonal
+from tools.euler import polygonal
 
 # collect all polygonals in range
 fourdigits = []

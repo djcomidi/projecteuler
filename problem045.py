@@ -1,4 +1,4 @@
-from eulertools import polygonal
+from tools.euler import polygonal
 
 tN, pN, hN = 285, 165, 143
 t, p, h = polygonal(3, tN), polygonal(5, pN), polygonal(6, hN)

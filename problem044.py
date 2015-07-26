@@ -1,6 +1,6 @@
 import sys
 
-from eulertools import polygonal
+from tools.euler import polygonal
 
 SIZE = 2500
 pentas = [polygonal(5, i) for i in range(1, SIZE + 1)]

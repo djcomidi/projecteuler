@@ -1,7 +1,7 @@
 from operator import mul
 from functools import reduce
 
-from eulertools import prime_factors_exps
+from tools.euler import prime_factors_exps
 
 exps = {}
 for n in range(2, 21):

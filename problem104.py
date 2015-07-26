@@ -1,6 +1,6 @@
 from gmpy2 import fib
 
-from eulertools import is_pandigital
+from tools.euler import is_pandigital
 
 fibA, fibB = 1, 1
 fibN = 2

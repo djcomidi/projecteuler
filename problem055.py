@@ -1,4 +1,4 @@
-from eulertools import is_palindrome
+from tools.euler import is_palindrome
 
 
 def is_lychrel(num):

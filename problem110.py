@@ -2,7 +2,7 @@ from gmpy2 import next_prime
 from functools import reduce
 from operator import mul
 
-from eulertools import prime_factors_exps
+from tools.euler import prime_factors_exps
 
 LIMIT = 4 * 10 ** 6
 factors = [2]
