@@ -1,7 +1,7 @@
-from EulerTools import Memoize
+from functools import lru_cache
 
 
-@Memoize
+@lru_cache(maxsize=256)
 def fill_count(minw, size):
     ways = 1
     for w in range(minw, size + 1):

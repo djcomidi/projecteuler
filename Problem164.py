@@ -1,7 +1,7 @@
-from EulerTools import Memoize
+from functools import lru_cache
 
 
-@Memoize
+@lru_cache(maxsize=256)
 def find_number(digits_to_do, last_digit=0, max_allowed=10):
     if digits_to_do == 0:
         return 1

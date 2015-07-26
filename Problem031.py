@@ -1,15 +1,9 @@
-from EulerTools import Memoize
-
-# default recursionlimit (=10**3) gives a
-# RuntimeError: maximum recursion depth exceeded
-import sys
-
-sys.setrecursionlimit(10 ** 4)
+from functools import lru_cache
 
 COINS = [1, 2, 5, 10, 20, 50, 100, 200]
 
 
-@Memoize
+@lru_cache(maxsize=256)
 def pay(rest, mincoin=1):
     if rest == 0:
         return 1

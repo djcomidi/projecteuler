@@ -1,7 +1,7 @@
-from EulerTools import Memoize
+from functools import lru_cache
 
 
-@Memoize
+@lru_cache(maxsize=8192)
 def p(k, n):
     if k > n:
         val = 0

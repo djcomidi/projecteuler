@@ -1,30 +1,24 @@
-from EulerTools import Memoize
+from itertools import combinations_with_replacement
+from functools import reduce
+from operator import mul
 
+# reqn = required number
+# before the reqns there are 13 possibilities
+# after each first occurrence of a reqn,
+# the number of possiblities increases
 
-def get_mask_count(mask):
-    v, t = 1, 13
-    for c in mask:
-        if c in "01A":
-            t += 1
-        else:
-            v *= t
-    return v
+# when p[0] == 13, it means that the first number is not a reqn
+# so the reqns can be exchanged anyhow, thus 6 combinations
+# else we have to eliminate that 0 might be the starting number,
+# thus only 4 combinations of reqns are valid
 
-
-@Memoize
-def findperms(mask="", requireds=set("01A")):
-    if len(mask) > 16:
-        return 0
-    if mask == "0":
-        return 0
-    perms = 0
-    if all(c in mask for c in "01A"):
-        perms += get_mask_count(mask)
-    for c in set(".") | requireds:
-        perms += findperms(mask + c, requireds - set(c))
-    return perms
-
-
-val = findperms()
-result = hex(val)[2:].upper()
+# for length 3 there are only 4 possible combinations
+# (can't start with a 0)
+total = 4
+# m is the number places that are not first occurences of required numbers
+for m in range(1, 14):
+    for p in combinations_with_replacement([13, 14, 15, 16], m):
+        t = 6 if p[0] == 13 else 4
+        total += reduce(mul, p, t)
+result = hex(total)[2:].upper()
 print(result)

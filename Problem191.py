@@ -1,7 +1,7 @@
-from EulerTools import Memoize
+from functools import lru_cache
 
 
-@Memoize
+@lru_cache(maxsize=32)
 def backtrack(daysleft, lcount=0, acount=0):
     if lcount == 2:
         return 0

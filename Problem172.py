@@ -1,20 +1,20 @@
-from EulerTools import Memoize
+from functools import lru_cache
 
 
-@Memoize
-def find_numbers(length, arr=None):
+@lru_cache(maxsize=1048576)
+def find_numbers(length, arr=(3, 3, 3, 3, 3, 3, 3, 3, 3, 3)):
     if length == 0:
         return 1
-    arr = list(arr) if arr else [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
-    if arr[0] == 2 and sum(arr) == 29:
+    t = list(arr)
+    if t[0] == 2 and sum(t) == 29:
         return 0
     valids = 0
     for i in range(10):
-        if arr[i] == 0:
+        if t[i] == 0:
             continue
-        arr[i] -= 1
-        valids += find_numbers(length - 1, tuple(arr))
-        arr[i] += 1
+        t[i] -= 1
+        valids += find_numbers(length - 1, tuple(t))
+        t[i] += 1
     return valids
 
 

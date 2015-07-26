@@ -1,9 +1,9 @@
 from gmpy2 import next_prime
 
-from EulerTools import Memoize
+from functools import lru_cache
 
 
-@Memoize
+@lru_cache(maxsize=512)
 def get_ways(num, minp=2):
     if num == 0:
         return 1
@@ -17,5 +17,5 @@ def get_ways(num, minp=2):
 n = 1
 while get_ways(n) < 5000:
     n += 1
-message = "%d, %d" % (n, get_ways(n))
+message = "value=%d  ways=%d" % (n, get_ways(n))
 print(message)
