@@ -16,8 +16,8 @@ def is_palindrome(x):
     return s == s[::-1]
 
 
-def is_pandigital(x, lowest=1, highest=9):
-    return sorted(str(x)) == [str(i) for i in range(lowest, highest + 1)]
+def is_pandigital(x):
+    return sorted(str(x)) == list("123456789")
 
 
 def is_triangle(t):
